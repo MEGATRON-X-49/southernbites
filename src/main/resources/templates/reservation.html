@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reserve - Southern Bites</title>
+  <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="brand">Southern Bites</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/menu">Menu</a>
+      <a href="/reserve" class="active">Reserve</a>
+      <a href="/admin">Admin</a>
+    </div>
+  </nav>
+
+  <main class="container narrow">
+    <h1>Reserve a Table</h1>
+    <form id="reserveForm" action="#" th:action="@{/reserve}" method="post" onsubmit="return validateReservationForm()">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required />
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+
+      <div class="form-row">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" pattern="[0-9]{7,15}" placeholder="Digits only" required />
+      </div>
+
+      <div class="form-row grid-2">
+        <div>
+          <label for="date">Date</label>
+          <input id="date" name="date" type="date" min="" required />
+        </div>
+        <div>
+          <label for="time">Time</label>
+          <input id="time" name="time" type="time" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="guests">Guests</label>
+        <input id="guests" name="guests" type="number" min="1" max="20" value="2" required />
+      </div>
+
+      <div class="form-row">
+        <button class="btn btn-accent" type="submit">Confirm Reservation</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div>Wipro campus-1 Cafeteria, Wipro Circle, Nanakramguda · +91 8179985285</div>
+    <div>&copy; 2025 Southern Bites. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // set min date to today
+    document.addEventListener('DOMContentLoaded', function(){
+      const dateInput = document.getElementById('date');
+      if(dateInput){
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth()+1).padStart(2,'0');
+        const dd = String(today.getDate()).padStart(2,'0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+      }
+    });
+  </script>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

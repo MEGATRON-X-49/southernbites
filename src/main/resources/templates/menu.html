@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu - Southern Bites</title>
+  <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="brand">Southern Bites</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/menu" class="active">Menu</a>
+      <a href="/reserve">Reserve</a>
+      <a href="/admin">Admin</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="page-title">Our Menu</h1>
+
+    <div class="menu-grid">
+      <div class="menu-item" th:each="item : ${menuItems}">
+        <img th:src="@{'/images/' + ${item.image}}" th:alt="${item.name}" />
+        <div class="menu-body">
+          <h3 th:text="${item.name}">Dish Name</h3>
+          <p class="desc" th:text="${item.description}">Description</p>
+          <div class="menu-footer">
+            <div class="price">₹ 
+              <span th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 2, 'POINT')}">199</span>
+            </div>
+            <div class="actions">
+              <!-- ✅ Updated: Now calls orderItem(id) instead -->
+              <button class="btn small" th:onclick="'orderItem(' + ${item.id} + ')'">Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-cta">
+      <a class="btn" href="/">Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div>Wipro campus-1 Cafeteria, Wipro Circle, Nanakramguda · +91 9100910056</div>
+    <div>&copy; 2025 Southern Bites. All rights reserved.</div>
+  </footer>
+
+  <!-- ✅ Inline script replaces orderPlaceholder -->
+  <script>
+    function orderItem(id) {
+      // Redirect to order page with item id
+      window.location.href = "/order?item=" + id;
+    }
+  </script>
+</body>
+</html>

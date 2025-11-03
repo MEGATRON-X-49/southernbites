@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank You - Southern Bites</title>
+  <link href="/css/style.css" rel="stylesheet" />
+  <style>
+    .thankyou-container {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #fff8e7, #fff);
+      border-radius: 20px;
+      max-width: 700px;
+      margin: 60px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .emoji {
+      font-size: 70px;
+      animation: pop 1.5s ease infinite alternate;
+    }
+
+    @keyframes pop {
+      0% {transform: scale(1);}
+      100% {transform: scale(1.1);}
+    }
+
+    .thankyou-title {
+      font-size: 2rem;
+      color: #e67e22;
+      margin-bottom: 10px;
+    }
+
+    .order-details {
+      text-align: left;
+      margin: 30px auto;
+      display: inline-block;
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .btn-group {
+      margin-top: 30px;
+    }
+
+    .btn {
+      background-color: #e67e22;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #cf6d17;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="brand">Southern Bites</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/menu">Menu</a>
+      <a href="/reserve">Reserve</a>
+      <a href="/admin">Admin</a>
+    </div>
+  </nav>
+
+  <main class="thankyou-container">
+    <div class="emoji">😊🎉🍴</div>
+    <h1 class="thankyou-title">Order Confirmed!</h1>
+    <p>Your delicious meal is being prepared with love ❤️</p>
+
+    <div class="order-details">
+      <p><strong>Customer:</strong> <span th:text="${name}">John Doe</span></p>
+      <p><strong>Phone:</strong> <span th:text="${phone}">9876543210</span></p>
+      <p><strong>Delivery Address:</strong> <span th:text="${address}">Wipro Campus, Hyderabad</span></p>
+      <hr>
+      <p><strong>Ordered Item:</strong> <span th:text="${item.name}">Butter Chicken</span></p>
+      <p><strong>Price:</strong> ₹<span th:text="${item.price}">299</span></p>
+    </div>
+
+    <div class="btn-group">
+      <a href="/menu" class="btn">Order More 🍔</a>
+      <a href="/" class="btn">Return Home 🏠</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div>Wipro campus-1 Cafeteria, Wipro Circle, Nanakramguda · +91 9100910056</div>
+    <div>&copy; 2025 Southern Bites. All rights reserved.</div>
+  </footer>
+</body>
+</html>

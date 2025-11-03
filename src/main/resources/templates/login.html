@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Admin Login - Southern Bites</title>
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container narrow">
+    <h2 class="page-title">Admin Login</h2>
+
+    <form th:action="@{/login}" method="post">
+      <div class="form-row">
+        <label>Username</label>
+        <input type="text" name="username" required>
+      </div>
+      <div class="form-row">
+        <label>Password</label>
+        <input type="password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-accent">Login</button>
+    </form>
+
+    <p th:if="${param.error}" style="color:red;">Invalid username or password</p>
+  </div>
+</body>
+</html>

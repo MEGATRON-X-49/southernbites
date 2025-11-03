@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Southern Bites</title>
+  <link href="/css/style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="brand">Southern Bites</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/menu">Menu</a>
+      <a href="/reserve">Reserve</a>
+      <a href="/admin">Admin</a>
+    </div>
+  </nav>
+
+  <header class="hero" style="background-image: url('/images/hero.jpg')">
+    <div class="hero-inner">
+      <h1>Southern Bites!</h1>
+      <p>Authentic Southern Cuisine · Veg & Non-Veg Delights</p>
+      <a class="btn" href="/menu">Explore Menu</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Welcome</h2>
+      <p>Southern Bites brings the rich flavors of South Indian cuisine right to your plate. From traditional vegetarian thalis to authentic non-veg delights, our chefs ensure every bite feels like home.</p>
+      <div class="cards">
+        <article class="card">
+          <img src="/images/veg-thali.jpg" alt="Veg Thali" />
+          <h3>Vegetarian Thali</h3>
+          <p>Wholesome seasonal vegetables, dal, rice, roti and chutneys.</p>
+        </article>
+        <article class="card">
+          <img src="/images/dosa.jpg" alt="Masala Dosa" />
+          <h3>Masala Dosa</h3>
+          <p>Crispy dosa with spiced potato filling, chutney & sambar.</p>
+        </article>
+        <article class="card">
+          <img src="/images/chicken_curry.jpg" alt="Chicken Curry" />
+          <h3>Kacheguda Chicken</h3>
+          <p>Aromatic slow-cooked chicken with local spices.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-inner">
+        <h2>Reserve your table now</h2>
+        <a class="btn btn-accent" href="/reserve">Reserve</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>Wipro campus-1 Cafeteria, Wipro Circle, Nanakramguda · +91 8179985285</div>
+    <div>&copy; 2025 Southern Bites. All rights reserved to KAMAL.</div>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

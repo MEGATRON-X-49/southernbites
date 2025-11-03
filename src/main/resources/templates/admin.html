@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Admin Dashboard - Southern Bites</title>
+  <link href="/css/style.css" rel="stylesheet">
+  <script src="/js/admin.js" defer></script>
+
+  <style>
+    /* --- Admin Page Visual Alignment Fix --- */
+    table {
+      width: 90%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f8f8f8;
+      font-weight: 600;
+      color: #333;
+    }
+
+    td:nth-child(2),
+    td:nth-child(3) {
+      text-align: left;
+    }
+
+    tr:hover {
+      background-color: #fafafa;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .editBtn {
+      background-color: #ffb347;
+      color: white;
+    }
+
+    .editBtn:hover {
+      background-color: #ff9800;
+    }
+
+    .deleteBtn {
+      background-color: #f77;
+      color: white;
+    }
+
+    .deleteBtn:hover {
+      background-color: #f33;
+    }
+
+    /* Modal Styling */
+    #editModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      width: 360px;
+      text-align: left;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    }
+
+    #editForm label {
+      display: block;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    #editForm input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #editForm button {
+      margin-top: 14px;
+    }
+
+    /* Buttons Row */
+    .footer-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .footer-buttons a {
+      margin: 0 8px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      background: #8b2e1f;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer-buttons a:hover {
+      background: #a33828;
+    }
+
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Welcome, Admin 🎉</h2>
+    <p style="text-align:center;">Here are the latest table reservations!</p>
+
+    <table id="reservationTable" th:if="${reservations != null and !reservations.isEmpty()}">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Guests</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+		<tr th:each="r, iterStat : ${reservations}">
+		  <td th:text="${iterStat.count}"></td>
+          <td th:text="${r.name}"></td>
+          <td th:text="${r.email}"></td>
+          <td th:text="${r.phone}"></td>
+          <td th:text="${r.date}"></td>
+          <td th:text="${r.time}"></td>
+          <td th:text="${r.guests}"></td>
+          <td>
+            <button class="btn editBtn" 
+              th:data-id="${r.id}" 
+              th:data-name="${r.name}" 
+              th:data-email="${r.email}" 
+              th:data-phone="${r.phone}" 
+              th:data-date="${r.date}" 
+              th:data-time="${r.time}" 
+              th:data-guests="${r.guests}">
+              ✏️ Edit
+            </button>
+            <button class="btn deleteBtn" th:data-id="${r.id}">🗑️ Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p th:if="${reservations == null or reservations.isEmpty()}" style="text-align:center; color:#777;">
+      No reservations yet! 😊
+    </p>
+
+    <div class="footer-buttons">
+      <a href="/">🏠 Back to Homepage</a>
+      <a href="/logout">🚪 Logout</a>
+    </div>
+  </div>
+
+  <!-- ✅ Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <h3>Edit Reservation</h3>
+      <form id="editForm">
+        <input type="hidden" id="resId">
+        <label>Name:</label><input type="text" id="resName">
+        <label>Email:</label><input type="email" id="resEmail">
+        <label>Phone:</label><input type="text" id="resPhone">
+        <label>Date:</label><input type="date" id="resDate">
+        <label>Time:</label><input type="time" id="resTime">
+        <label>Guests:</label><input type="number" id="resGuests">
+        <button type="submit" class="btn editBtn">💾 Save</button>
+        <button type="button" id="closeModal" class="btn deleteBtn">❌ Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Southern Bites · Made with ❤️ for our lovely diners.
+  </div>
+</body>
+</html>
