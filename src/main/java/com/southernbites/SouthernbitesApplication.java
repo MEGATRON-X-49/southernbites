@@ -33,7 +33,7 @@ public class SouthernbitesApplication {
             menuItemRepository.save(new MenuItem("Fish Curry", "Tangy fish curry cooked with tamarind and spices", 250.0, "fish_curry.jpg"));
             menuItemRepository.save(new MenuItem("Mutton Kebab", "Juicy kebabs grilled to perfection", 270.0, "mutton-kebab.jpg"));
             menuItemRepository.save(new MenuItem("Paneer Butter Masala", "Creamy tomato gravy with soft paneer cubes", 200.0, "paneer_butter.jpg"));
-            menuItemRepository.save(new MenuItem("Veg Thali", "Traditional South Indian vegetarian thali", 150.0, "veg-thali.jpg"));
+            menuItemRepository.save(new MenuItem("Veg Thali", "Traditional South Indian vegetarian thali", 150.0, "veg_thali.jpg"));
             System.out.println("✅ Default Menu Items Added Successfully!");
         } else {
             System.out.println("ℹ️ Menu Items Already Exist – Skipping Seeding");
