@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class MenuItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,7 +14,15 @@ public class MenuItem {
     private double price;
     private String image;
 
-    // Getters and setters
+    public MenuItem() {}
+
+    public MenuItem(String name, String description, double price, String image) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+    }
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getName() { return name; }

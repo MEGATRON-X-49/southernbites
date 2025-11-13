@@ -21,7 +21,7 @@ public class MenuSeeder {
                 createItem("Fish Curry", "Tangy and spicy fish curry cooked with tamarind.", 250, "fish_curry.jpg"),
                 createItem("Mutton Kebab", "Tender mutton kebabs grilled with herbs.", 300, "mutton-kebab.jpg"),
                 createItem("Paneer Butter Masala", "Creamy paneer curry with butter and rich gravy.", 200, "paneer_butter.jpg"),
-                createItem("Veg Thali", "Traditional South Indian thali with multiple curries.", 180, "veg_thali.jpg")
+                createItem("Veg Thali", "Traditional South Indian thali with multiple curries.", 180, "veg-thali.jpg")
             };
             for (MenuItem item : items) {
                 menuItemRepository.save(item);
